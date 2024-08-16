@@ -1,42 +1,27 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { useFormik } from 'formik';
-import { getSignUpSchema } from '../../utils/validationSchemas';
+import { useState, useRef } from 'react';
 
 export default function SignUp() {
     const [signUpMethod, setSignUpMethod] = useState<'email' | 'mobile'>('email');
     const [userType, setUserType] = useState<'self' | 'child'>('self');
     const [codeSent, setCodeSent] = useState(false);
     const [verificationCode, setVerificationCode] = useState<string[]>(Array(4).fill(""));
-
-    const formik = useFormik({
-        initialValues: {
-            signUpMethod,
-            userType,
-            email: '',
-            mobile: '',
-            firstName: '',
-            lastName: '',
-            yourFirstName: '',
-            yourLastName: '',
-            childName: '',
-        },
-        validationSchema: getSignUpSchema(),
-        onSubmit: (values) => {
-            setCodeSent(true);
-        },
-    });
-
-    useEffect(() => {
-        formik.setFieldValue('signUpMethod', signUpMethod);
-        formik.setFieldValue('userType', userType);
-    }, [signUpMethod, userType]);
+    const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
     const handleCodeChange = (value: string, index: number) => {
         const newCode = [...verificationCode];
         newCode[index] = value;
         setVerificationCode(newCode);
+
+        // Move to next input if the current input has a value
+        if (value && index < 3) {
+            inputRefs.current[index + 1]?.focus();
+        }
+    };
+
+    const handleGetCodeClick = () => {
+        setCodeSent(true);
     };
 
     return (
@@ -46,7 +31,7 @@ export default function SignUp() {
                 Sign Up
             </h4>
 
-            <form onSubmit={formik.handleSubmit} className="w-full max-w-xs space-y-6">
+            <form className="w-full max-w-xs space-y-6">
 
                 {/* User Type Selection */}
                 <div className="relative w-full max-w-xs flex justify-center">
@@ -110,14 +95,9 @@ export default function SignUp() {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            {...formik.getFieldProps('email')}
-                            className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.email && formik.errors.email ? 'border border-red-500' : ''
-                                }`}
+                            className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                             disabled={codeSent}
                         />
-                        {formik.touched.email && formik.errors.email && (
-                            <div className="text-red-500 text-sm mt-1">{formik.errors.email}</div>
-                        )}
                     </div>
                 ) : (
                     <div className="space-y-1">
@@ -128,15 +108,10 @@ export default function SignUp() {
                             <input
                                 type="tel"
                                 placeholder="Enter your mobile number"
-                                {...formik.getFieldProps('mobile')}
-                                className={`w-full p-3 pl-20 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.mobile && formik.errors.mobile ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 pl-20 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
                         </div>
-                        {formik.touched.mobile && formik.errors.mobile && (
-                            <div className="text-red-500 text-sm mt-1">{formik.errors.mobile}</div>
-                        )}
                     </div>
                 )}
 
@@ -147,27 +122,17 @@ export default function SignUp() {
                             <input
                                 type="text"
                                 placeholder="First Name"
-                                {...formik.getFieldProps('firstName')}
-                                className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.firstName && formik.errors.firstName ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
-                            {formik.touched.firstName && formik.errors.firstName && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.firstName}</div>
-                            )}
                         </div>
                         <div className="space-y-1">
                             <input
                                 type="text"
                                 placeholder="Last Name"
-                                {...formik.getFieldProps('lastName')}
-                                className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.lastName && formik.errors.lastName ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
-                            {formik.touched.lastName && formik.errors.lastName && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.lastName}</div>
-                            )}
                         </div>
                     </>
                 )}
@@ -178,40 +143,25 @@ export default function SignUp() {
                             <input
                                 type="text"
                                 placeholder="Your First Name"
-                                {...formik.getFieldProps('yourFirstName')}
-                                className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.yourFirstName && formik.errors.yourFirstName ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
-                            {formik.touched.yourFirstName && formik.errors.yourFirstName && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.yourFirstName}</div>
-                            )}
                         </div>
                         <div className="space-y-1">
                             <input
                                 type="text"
                                 placeholder="Your Last Name"
-                                {...formik.getFieldProps('yourLastName')}
-                                className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.yourLastName && formik.errors.yourLastName ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
-                            {formik.touched.yourLastName && formik.errors.yourLastName && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.yourLastName}</div>
-                            )}
                         </div>
                         <div className="space-y-1">
                             <input
                                 type="text"
                                 placeholder="Child Name"
-                                {...formik.getFieldProps('childName')}
-                                className={`w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${formik.touched.childName && formik.errors.childName ? 'border border-red-500' : ''
-                                    }`}
+                                className="w-full p-3 rounded-full bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                 disabled={codeSent}
                             />
-                            {formik.touched.childName && formik.errors.childName && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.childName}</div>
-                            )}
                         </div>
                     </>
                 )}
@@ -228,13 +178,9 @@ export default function SignUp() {
                                     value={digit}
                                     onChange={(e) => handleCodeChange(e.target.value, index)}
                                     className="w-10 h-10 sm:w-12 sm:h-12 text-center text-xl rounded-lg bg-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                                    ref={(el) => { inputRefs.current[index] = el; }}
                                 />
                             ))}
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <button className="mt-3 text-sm text-white bg-gradient-to-r from-[#F29183] to-[#F2A09A] py-2 px-4 rounded-full transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 focus:ring-opacity-50">
-                                Re-send Code
-                            </button>
                         </div>
                     </div>
                 )}
@@ -242,11 +188,12 @@ export default function SignUp() {
                 {/* Submit Button */}
                 <div className="flex flex-col items-center mt-6 w-full max-w-xs">
                     <button
-                        type="submit"
+                        type="button"
+                        onClick={handleGetCodeClick}
                         className="w-3/4 py-3 rounded-full text-base font-medium tracking-wider text-white bg-gradient-to-r from-[#6D83F2] to-[#9AA0F2] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 transition-transform duration-300 ease-in-out"
-                        disabled={formik.isSubmitting}
+                        disabled={codeSent}
                     >
-                        {codeSent ? "Register" : "Sign Up"}
+                        {codeSent ? "Next" : "Get Code"}
                     </button>
                 </div>
             </form>
