@@ -17,14 +17,14 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-indigo-100 via-purple-50 to-pink-100 text-gray-900 p-6">
+    <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white p-6">
       <div className="flex flex-col items-center text-center space-y-1.5">
         <Lottie
           animationData={animationData}
           loop={true}
           style={{ height: '190px', width: '190px' }}
         />
-        <h1 className="text-5xl font-extrabold text-gray-800 drop-shadow-md">
+        <h1 className="text-5xl font-extrabold drop-shadow-md">
           CareerBridge
         </h1>
       </div>
@@ -32,12 +32,12 @@ export default function Home() {
       <div className="flex flex-col items-center space-y-4 sm:space-y-5 mt-5">
         <Button
           onClick={handleSignInClick}
-          className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50"
+          className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
           style={{
-            background: "linear-gradient(120deg, #6D83F2, #9AA0F2)",
-            color: "#FFFFFF",
+            background: "linear-gradient(120deg, #333, #000)",
+            color: "white",
             letterSpacing: "0.07em",
-            boxShadow: "0 8px 24px rgba(109, 131, 242, 0.6)",
+            boxShadow: "0 8px 24px rgba(255, 255, 255, 0.1)",
             minWidth: "280px",
           }}
         >
@@ -46,12 +46,12 @@ export default function Home() {
 
         <Button
           onClick={handleSignUpClick}
-          className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-pink-300 focus:ring-opacity-50"
+          className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
           style={{
-            background: "linear-gradient(120deg, #F29183, #F2A09A)",
-            color: "#FFFFFF",
+            background: "linear-gradient(120deg, #333, #000)",
+            color: "white",
             letterSpacing: "0.07em",
-            boxShadow: "0 8px 24px rgba(242, 145, 131, 0.6)",
+            boxShadow: "0 8px 24px rgba(255, 255, 255, 0.1)",
             minWidth: "280px",
           }}
         >
@@ -59,7 +59,7 @@ export default function Home() {
         </Button>
       </div>
 
-      <p className="mt-8 text-xl text-center text-gray-600 drop-shadow-sm">
+      <p className="mt-8 text-xl text-center drop-shadow-sm">
         Empowering parents and children for a brighter future.
       </p>
     </main>
