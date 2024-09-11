@@ -1,8 +1,6 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import Lottie from 'lottie-react';
-import animationData from './family.json';
 import { Button } from '@headlessui/react';
 
 export default function Home() {
@@ -19,11 +17,6 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white p-6">
       <div className="flex flex-col items-center text-center space-y-1.5">
-        <Lottie
-          animationData={animationData}
-          loop={true}
-          style={{ height: '190px', width: '190px' }}
-        />
         <h1 className="text-5xl font-extrabold drop-shadow-md">
           CareerBridge
         </h1>
@@ -34,7 +27,7 @@ export default function Home() {
           onClick={handleSignInClick}
           className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
           style={{
-            background: "linear-gradient(120deg, #333, #000)",
+            background: "linear-gradient(120deg, #333)",
             color: "white",
             letterSpacing: "0.07em",
             boxShadow: "0 8px 24px rgba(255, 255, 255, 0.1)",
