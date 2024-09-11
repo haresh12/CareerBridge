@@ -27,7 +27,7 @@ export default function Home() {
           onClick={handleSignInClick}
           className="w-full max-w-xs py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold tracking-wider transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
           style={{
-            background: "linear-gradient(120deg, #333, #000)",
+            background: "linear-gradient(120deg, #333)",
             color: "white",
             letterSpacing: "0.07em",
             boxShadow: "0 8px 24px rgba(255, 255, 255, 0.1)",
