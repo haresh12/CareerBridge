@@ -137,35 +137,6 @@ export default function SignUp() {
                     </>
                 )}
 
-                {userType === 'child' && (
-                    <>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Your First Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Your Last Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Child Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                    </>
-                )}
-                
                 {/* Submit Button */}
                 <div className="flex flex-col items-center mt-6 w-full max-w-xs">
                     <button
