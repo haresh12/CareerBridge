@@ -137,54 +137,6 @@ export default function SignUp() {
                     </>
                 )}
 
-                {userType === 'child' && (
-                    <>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Your First Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Your Last Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                        <div className="space-y-1">
-                            <input
-                                type="text"
-                                placeholder="Child Name"
-                                className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500"
-                                disabled={codeSent}
-                            />
-                        </div>
-                    </>
-                )}
-
-                {/* Verification UI */}
-                {codeSent && (
-                    <div className="w-full max-w-xs mt-4 space-y-4">
-                        <div className="flex justify-center space-x-2">
-                            {verificationCode.map((digit, index) => (
-                                <input
-                                    key={index}
-                                    type="text"
-                                    maxLength={1}
-                                    value={digit}
-                                    onChange={(e) => handleCodeChange(e.target.value, index)}
-                                    className="w-10 h-10 sm:w-12 sm:h-12 text-center text-xl rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
-                                    ref={(el) => { inputRefs.current[index] = el; }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                )}
-
                 {/* Submit Button */}
                 <div className="flex flex-col items-center mt-6 w-full max-w-xs">
                     <button
