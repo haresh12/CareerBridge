@@ -67,45 +67,7 @@ export default function SignIn() {
             Mobile
           </button>
         </div>
-      </div>
-
-      {/* Input for Email or Phone */}
-      <div className="w-full max-w-xs mt-6">
-        {signInMethod === 'email' ? (
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full p-3 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500 transition-shadow duration-300 ease-in-out shadow-lg"
-          />
-        ) : (
-          <div className="relative flex items-center w-full">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-              🇮🇳 +91
-            </span>
-            <input
-              type="tel"
-              placeholder="Enter your mobile number"
-              className="w-full p-3 pl-20 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-500 transition-shadow duration-300 ease-in-out shadow-lg"
-            />
-          </div>
-        )}
-
-        {/* Code Verification UI */}
-        {codeSent && (
-          <div className="flex justify-center space-x-2 mt-8">
-            {verificationCode.map((digit, index) => (
-              <input
-                key={index}
-                type="text"
-                maxLength={1}
-                value={digit}
-                onChange={(e) => handleCodeChange(e.target.value, index)}
-                className="w-12 h-12 text-center text-xl rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-md"
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      </div>  
 
       {/* Get Code/Verify Button and Re-send Option */}
       <div className="flex flex-col items-center mt-6 w-full max-w-xs">
