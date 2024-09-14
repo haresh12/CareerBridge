@@ -55,6 +55,55 @@ export default function Home() {
       <p className="mt-8 text-xl text-center drop-shadow-sm">
         Empowering parents and children for a brighter future.
       </p>
+
+      {/* Testimonials Section */}
+      <section className="mt-12 px-6 max-w-5xl">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          What Parents Are Saying
+        </h2>
+        <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <p className="text-lg text-gray-300 italic">
+              "CareerBridge helped us explore career paths we never considered. Our child is now pursuing a passion they truly love!"
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              - Ramesh, Parent from Mumbai
+            </h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <p className="text-lg text-gray-300 italic">
+              "The platform's insights into future career trends made it easier for us to guide our son towards the right choice."
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              - Priya, Parent from Delhi
+            </h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <p className="text-lg text-gray-300 italic">
+              "We loved how CareerBridge's quizzes helped identify our daughter's strengths and aligned her interests with real-world careers."
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              - Rajesh, Parent from Bangalore
+            </h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <p className="text-lg text-gray-300 italic">
+              "CareerBridge is a game-changer for parents like us who want to make informed decisions about our children's futures."
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              - Meera, Parent from Hyderabad
+            </h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <p className="text-lg text-gray-300 italic">
+              "The personalized recommendations gave us the confidence to guide our child towards a rewarding career."
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              - Anil, Parent from Chennai
+            </h3>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
